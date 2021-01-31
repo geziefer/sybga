@@ -74,7 +74,7 @@ class SYBGA extends Table
         }
         $sql .= implode( $values, ',' );
         self::DbQuery( $sql );
-        self::reattributeColorsBasedOnPreferences( $players, $gameinfos['player_colors'] );
+        //self::reattributeColorsBasedOnPreferences( $players, $gameinfos['player_colors'] );
         self::reloadPlayersBasicInfos();
         
         /************ Start the game initialization *****/
@@ -88,8 +88,9 @@ class SYBGA extends Table
         //self::initStat( 'player', 'player_teststat1', 0 );  // Init a player statistics (for all players)
 
         // TODO: setup the initial game situation here
-       
 
+        $default_colors = array( "ffffff", "000000" );
+        
         // Activate first player (which is in general a good idea :) )
         $this->activeNextPlayer();
 
