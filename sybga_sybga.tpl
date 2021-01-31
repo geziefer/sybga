@@ -26,7 +26,8 @@
 -->
 
 
-This is your game interface. You can edit this HTML in your ".tpl" file.
+<div id="board">
+</div>
 
 
 <script type="text/javascript">
@@ -38,7 +39,6 @@ This is your game interface. You can edit this HTML in your ".tpl" file.
 var jstpl_some_game_item='<div class="my_game_item" id="my_game_item_${MY_ITEM_ID}"></div>';
 
 */
-
 </script>  
 
 {OVERALL_GAME_FOOTER}
