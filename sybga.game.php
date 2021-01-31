@@ -61,7 +61,7 @@ class SYBGA extends Table
         // The default below is red/green/blue/orange/brown
         // The number of colors defined here must correspond to the maximum number of players allowed for the gams
         $gameinfos = self::getGameinfos();
-        $default_colors = $gameinfos['player_colors'];
+        $default_colors = array( "ffffff", "000000" );
  
         // Create players
         // Note: if you added some extra field on "player" table in the database (dbmodel.sql), you can initialize it there.
@@ -89,8 +89,6 @@ class SYBGA extends Table
 
         // TODO: setup the initial game situation here
 
-        $default_colors = array( "ffffff", "000000" );
-        
         // Activate first player (which is in general a good idea :) )
         $this->activeNextPlayer();
 
