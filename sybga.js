@@ -98,6 +98,9 @@ function (dojo, declare) {
                 break;
            */
            
+            case 'playerTurn':
+                this.updatePossibleMoves( args.args.possibleMoves );
+            break;
            
             case 'dummmy':
                 break;
@@ -178,6 +181,23 @@ function (dojo, declare) {
            this.slideToObject( 'token_'+x+'_'+y, 'square_'+x+'_'+y ).play();
        },
 
+       updatePossibleMoves: function( possibleMoves )
+        {
+            // Remove current possible moves
+            dojo.query( '.possibleMove' ).removeClass( 'possibleMove' );
+
+            for( var x in possibleMoves )
+            {
+                for( var y in possibleMoves[ x ] )
+                {
+                    // x,y is a possible move
+                    dojo.addClass( 'square_'+x+'_'+y, 'possibleMove' );
+                }            
+            }
+                        
+            this.addTooltipToClass( 'possibleMove', '', _('Place a disc here') );
+        },
+        
         ///////////////////////////////////////////////////
         //// Player's action
         
