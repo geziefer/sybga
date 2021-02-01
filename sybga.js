@@ -68,6 +68,8 @@ function (dojo, declare) {
                 }
             }
  
+            dojo.query( '.square' ).connect( 'onclick', this, 'onPlayDisc' );
+            
             // Setup game notifications to handle (see "setupNotifications" method below)
             this.setupNotifications();
 
@@ -197,7 +199,7 @@ function (dojo, declare) {
                         
             this.addTooltipToClass( 'possibleMove', '', _('Place a disc here') );
         },
-        
+
         ///////////////////////////////////////////////////
         //// Player's action
         
@@ -246,6 +248,31 @@ function (dojo, declare) {
         
         */
 
+       onPlayDisc: function( evt )
+       {
+           // Stop this event propagation
+           dojo.stopEvent( evt );
+
+           // Get the cliqued square x and y
+           // Note: square id format is "square_X_Y"
+           var coords = evt.currentTarget.id.split('_');
+           var x = coords[1];
+           var y = coords[2];
+
+           if( ! dojo.hasClass( 'square_'+x+'_'+y, 'possibleMove' ) )
+           {
+               // This is not a possible move => the click does nothing
+               return ;
+           }
+           
+           if( this.checkAction( 'playDisc' ) )    // Check that this action is possible at this moment
+           {            
+               this.ajaxcall( "/sybga/sybga/playDisc.html", {
+                   x:x,
+                   y:y
+               }, this, function( result ) {} );
+           }            
+       },
         
         ///////////////////////////////////////////////////
         //// Reaction to cometD notifications

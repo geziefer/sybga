@@ -306,6 +306,66 @@ class SYBGA extends Table
     
     */
 
+    function playDisc( $x, $y )
+    {
+        // Check that this player is active and that this action is possible at this moment
+        self::checkAction( 'playDisc' );  
+        
+        $player_id = self::getActivePlayerId(); 
+        
+        // Now, check if this is a possible move
+        $board = self::getBoard();
+        $turnedOverDiscs = self::getTurnedOverDiscs( $x, $y, $player_id, $board );
+        
+        if( count( $turnedOverDiscs ) > 0 )
+        {
+            // This move is possible!
+            // Let's place a disc at x,y and return all "$returned" discs to the active player
+            
+            $sql = "UPDATE board SET board_player='$player_id'
+                    WHERE ( board_x, board_y) IN ( ";
+            
+            foreach( $turnedOverDiscs as $turnedOver )
+            {
+                $sql .= "('".$turnedOver['x']."','".$turnedOver['y']."'),";
+            }
+            $sql .= "('$x','$y') ) ";
+                       
+            self::DbQuery( $sql );
+            
+            // Update scores according to the number of disc on board
+            $sql = "UPDATE player
+                    SET player_score = (
+                    SELECT COUNT( board_x ) FROM board WHERE board_player=player_id
+                    )";
+            self::DbQuery( $sql );
+            
+            // Notify
+            self::notifyAllPlayers( "playDisc", clienttranslate( '${player_name} plays a disc and turns over ${returned_nbr} disc(s)' ), array(
+                'player_id' => $player_id,
+                'player_name' => self::getActivePlayerName(),
+                'returned_nbr' => count( $turnedOverDiscs ),
+                'x' => $x,
+                'y' => $y
+            ) );
+
+            self::notifyAllPlayers( "turnOverDiscs", '', array(
+                'player_id' => $player_id,
+                'turnedOver' => $turnedOverDiscs
+            ) );
+            
+            $newScores = self::getCollectionFromDb( "SELECT player_id, player_score FROM player", true );
+            self::notifyAllPlayers( "newScores", "", array(
+                "scores" => $newScores
+            ) );
+            
+            // Then, go to the next state
+            $this->gamestate->nextState( 'playDisc' );
+        }
+        else
+            throw new feException( "Impossible move" );
+    }
+
     
 //////////////////////////////////////////////////////////////////////////////
 //////////// Game state arguments
