@@ -1,5 +1,5 @@
-# sybga: A tutorial for "Reversi" on BGA
-(source: https://boardgamearena.com/doc/Tutorial_reversi)
+# SYBGA: Ein "Reversi"-Tutorial für BGA
+(Quelle:: https://boardgamearena.com/doc/Tutorial_reversi)
 
 https://github.com/geziefer/sybga
 -> checkout tags Tutorial_Step_X
