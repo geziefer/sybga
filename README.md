@@ -33,10 +33,10 @@ Tutorial_Step_3: Datenmodell
 Tutorial_Step_4: State Machine und Game Logik
 - states:  Zustandsmaschine, 2 neue States mit Translation
 - game:    Function für player args in game state arguments section;
-           Function für next player Action in game state action section;
-		   Function für possible moves mit dojo css Änderung in utility section;
-		   Function für get board in utility section;
-		   Function für turned over discs in utility section
+           Function für possible moves mit dojo css Änderung in utility section;
+           Function für get board in utility section;
+           Function für turned over discs in utility section;
+           Function für next player Action in game state action section
 -> F5
 
 Tutorial_Step_5: Zugmöglichkeiten
@@ -55,7 +55,7 @@ Tutorial_Step_6: Zug ausführen
 Tutorial_Step_7: Animation
 - js:     Notification Callbacks mit Dojo in setupNotifications;
           Function für play disc notification für neues Token auf Board;
-		  Function für turn over discs notification für tun over Animation mit Dojo;
-		  Function für new scores notification für Score Update
+          Function für turn over discs notification für tun over Animation mit Dojo;
+          Function für new scores notification für Score Update
 -> F5
 
