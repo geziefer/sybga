@@ -27,7 +27,7 @@ Tutorial_Step_3
 - db:      Datenmodell Board
 - game:    Tabelle füllen mit NULLs und 4 Token in setup;
            Token laden in getAllDatas
-- js:      Tokens platzieren gemäß DB
+- js:      Tokens platzieren gemäß DB in setup
 -> Neustart Spiel
 
 Tutorial_Step_4
