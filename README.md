@@ -8,7 +8,7 @@ Tutorial_Step_0: Template
 - sybga:   Projekttemplate mit TODOs und Examples
 
 Tutorial_Step_1: Board
-- img:	   Board und Token Grafik
+- img:	Board und Token Grafik
 - tpl:     div mit Block für Squares mit Platzhaltern
 - view:    64x Block mit Square füllen
 - css:     Board als Hintergrund, relativ; 
@@ -16,7 +16,7 @@ Tutorial_Step_1: Board
 -> F5, Squares mit F12
 
 Tutorial_Step_2: Token-Platzierung
-- tpl:     div mit Token; HTML-Fragment für Token
+- tpl:     div mit Token; HTML-Fragment für Token in script section
 - css:     Token als CSS Sprite
 - game:    Colors setzen in setup
 - js:      Function für Token-Platzierung mit Dojo-Animation in utility section;
@@ -46,7 +46,7 @@ Tutorial_Step_5: Zugmöglichkeiten
 -> F5
 
 Tutorial_Step_6: Zug ausführen
-- js:     onclick Callback für Square mit Dojo;
+- js:     onclick Callback für Square mit Dojo in setup;
           Function für play disc in player action section
 - action: Function für client action play disc
 - game:   Function für play disc in player action section
